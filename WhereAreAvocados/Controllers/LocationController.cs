@@ -8,6 +8,7 @@ using WhereAreAvocados.Data.Models.Data;
 
 namespace WhereAreAvocados.Controllers
 {
+    [Authorize]
     public class LocationController : ApiController
     {
         // GET: api/Location/Test
