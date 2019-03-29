@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace WhereAreAvocados
 {
@@ -14,7 +15,8 @@ namespace WhereAreAvocados
     {
         public void Configuration(IAppBuilder app)
         {
-            var authority = "https://dev-597504.okta.com/oauth2/default";
+            //var authority = "https://dev-597504.okta.com/oauth2/default";
+            var authority = ConfigurationManager.AppSettings["OKTA_AUTHORITY"];
 
             var configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
                authority + "/.well-known/openid-configuration",
