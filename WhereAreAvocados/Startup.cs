@@ -15,8 +15,8 @@ namespace WhereAreAvocados
     {
         public void Configuration(IAppBuilder app)
         {
-            //var authority = "https://dev-597504.okta.com/oauth2/default";
-            var authority = ConfigurationManager.AppSettings["OKTA_AUTHORITY"];
+            var authority = ConfigurationManager.AppSettings["AUTHORITY"];
+            var audience = ConfigurationManager.AppSettings["AUDIENCE"];
 
             var configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
                authority + "/.well-known/openid-configuration",
@@ -30,7 +30,7 @@ namespace WhereAreAvocados
                    AuthenticationMode = AuthenticationMode.Active,
                    TokenValidationParameters = new TokenValidationParameters()
                    {
-                       ValidAudience = "api://default",
+                       ValidAudience = audience,
                        ValidIssuer = authority,
                        IssuerSigningKeyResolver = (token, securityToken, identifier, parameters) =>
                        {
